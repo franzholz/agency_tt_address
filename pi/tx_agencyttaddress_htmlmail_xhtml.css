@@ -1,0 +1,15 @@
+/* Default stylesheet for the html mails of extension agency_tt_address */
+* { margin: 0; padding: 0; }
+body { background:#ffffff none; margin: 0; padding: 1em; font-family:Verdana, sans-serif; font-size: 12px; color: #35006d; line-height: 125%; }
+.tx-agencyttaddress p, .tx-agencyttaddress h4 { margin: 0; padding: 0 .4em; text-indent: 0; }
+.tx-agencyttaddress p, .tx-agencyttaddress dl { padding-top: .5em; }
+.tx-agencyttaddress h4 { font-weight: bold; }
+.tx-agencyttaddress a:link { color: navy; background-color: transparent; font-weight: bold; text-decoration: none; }
+.tx-agencyttaddress a:visited { color :navy; }
+.tx-agencyttaddress a:hover { color: #333333; }
+.tx-agencyttaddress a:active { color: navy; }
+.tx-agencyttaddress dt, .tx-agencyttaddress dd { padding-bottom: .5em; }
+.tx-agencyttaddress dt { float: left; clear: both; width: 20%; text-align: right; }
+.tx-agencyttaddress dd { text-align: left; float: right; clear: right; width: 78%; }
+.tx-agencyttaddress ul.tx-agencyttaddress-multiple-checked-values { list-style-type: square; list-style-image: none; list-style-position: inside; }
+.tx-agencyttaddress ul.tx-agencyttaddress-multiple-checked-values li { float: left; margin: 0 1em 0 0; }
