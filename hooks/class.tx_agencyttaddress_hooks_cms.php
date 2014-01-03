@@ -46,8 +46,8 @@ class tx_agencyttaddress_hooks_cms extends tx_div2007_hooks_cms {
 }
 
 
-if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/agency_tt_address/hooks/class.tx_sremailsubsribe_hooks_cms.php'])	{
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/agency_tt_address/hooks/class.tx_sremailsubsribe_hooks_cms.php']);
+if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/agency_tt_address/hooks/class.tx_agencyttaddress_hooks_cms.php'])	{
+	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/agency_tt_address/hooks/class.tx_agencyttaddress_hooks_cms.php']);
 }
 
 ?>
