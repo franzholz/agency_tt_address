@@ -20,9 +20,13 @@
             <label index="tt_address.language">Language:</label>
             <label index="tt_address.first_name">First Name:</label>
             <label index="tt_address.last_name">Last Name:</label>
+            <label index="tt_address.module_sys_dmail_category">Direct Mail Categories</label>
             <label index="tt_address.module_sys_dmail_html">Receive emails in HTML format?</label>
             <label index="tt_address.date_of_birth">Date of birth:</label>
             <label index="tt_address.comments">Comments:</label>
+            <label index="sys_dmail_category">Direct Mail Category</label>
+            <label index="sys_dmail_category.category">Category:</label>
+            <label index="sys_dmail_category.old_cat_number">Old category number:</label>
         </languageKey>
     </data>
 </T3locallang>

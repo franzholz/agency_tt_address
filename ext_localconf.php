@@ -42,14 +42,19 @@ if (!defined ('PARTY_EXT')) {
 t3lib_extMgm::addPItoST43($_EXTKEY, 'class.tx_agencyttaddress.php', '', 'list_type', 0);
 
 $_EXTCONF = unserialize($_EXTCONF);    // unserializing the configuration so we can use it here:
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['imagefolder'] = $_EXTCONF['imageFolder'] ? $_EXTCONF['imageFolder'] : 'uploads/tx_agencyttaddress';
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['useImageFolder'] = !empty($_EXTCONF['useImageFolder']) ? $_EXTCONF['useImageFolder'] : '0';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['imagefolder'] =
+	$_EXTCONF['imageFolder'] ? $_EXTCONF['imageFolder'] : 'uploads/tx_agencyttaddress';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['useImageFolder'] =
+	!empty($_EXTCONF['useImageFolder']) ? $_EXTCONF['useImageFolder'] : '0';
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['addressTable'] = $_EXTCONF['addressTable'];
+
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['enableDirectMail'] = $_EXTCONF['enableDirectMail'] ? $_EXTCONF['enableDirectMail'] : 0;
 
 	// Save extension version and constraints
 require_once(t3lib_extMgm::extPath($_EXTKEY) . 'ext_emconf.php');
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['version'] = $EM_CONF[$_EXTKEY]['version'];
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['constraints'] = $EM_CONF[$_EXTKEY]['constraints'];
+
 
 if (t3lib_extMgm::isLoaded(DIV2007_EXT)) {
 	if (!defined ('PATH_BE_div2007')) {
@@ -58,11 +63,15 @@ if (t3lib_extMgm::isLoaded(DIV2007_EXT)) {
 }
 
 	// Captcha marker hook
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['registrationProcess'][] = 'EXT:' . AGENCY_EXT . '/hooks/captcha/class.tx_agency_captcha.php:&tx_agency_captcha';
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['model'][] = 'EXT:' . AGENCY_EXT . '/hooks/captcha/class.tx_agency_captcha.php:&tx_agency_captcha';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['registrationProcess'][] =
+	'EXT:' . AGENCY_EXT . '/hooks/captcha/class.tx_agency_captcha.php:&tx_agency_captcha';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['model'][] =
+	'EXT:' . AGENCY_EXT . '/hooks/captcha/class.tx_agency_captcha.php:&tx_agency_captcha';
 	// Freecap marker hook
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['registrationProcess'][] = 'EXT:' . AGENCY_EXT . '/hooks/freecap/class.tx_agency_freecap.php:&tx_agency_freecap';
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['model'][] = 'EXT:' . AGENCY_EXT . '/hooks/freecap/class.tx_agency_freecap.php:&tx_agency_freecap';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['registrationProcess'][] =
+	'EXT:' . AGENCY_EXT . '/hooks/freecap/class.tx_agency_freecap.php:&tx_agency_freecap';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['model'][] =
+	'EXT:' . AGENCY_EXT . '/hooks/freecap/class.tx_agency_freecap.php:&tx_agency_freecap';
 
 $addressTable = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['addressTable'];
 if (!$addressTable) {
@@ -82,17 +91,16 @@ if (TYPO3_MODE == 'BE')	{
 
 	if (defined('PATH_BE_div2007')) {
 		// replace the output of the former CODE field with the flexform
-		$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['list_type_Info'][$_EXTKEY][] = 'EXT:' . $_EXTKEY . '/hooks/class.tx_agencyttaddress_hooks_cms.php:&tx_agencyttaddress_hooks_cms->pmDrawItem';
+		$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['list_type_Info'][$_EXTKEY][] =
+			'EXT:' . $_EXTKEY . '/hooks/class.tx_agencyttaddress_hooks_cms.php:&tx_agencyttaddress_hooks_cms->pmDrawItem';
 	}
 
 	if (
 		!defined($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cms']['db_layout']['addTables']['fe_users']['MENU'])
 		&& ($addressTable == 'tt_address')
 	) {
-		$tableArray = array($addressTable);
-		foreach ($tableArray as $theTable)	{
-			$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cms']['db_layout']['LLFile'][$theTable] = 'EXT:' . $_EXTKEY . '/locallang.xml';
-		}
+		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cms']['db_layout']['LLFile'][$addressTable] = 'EXT:' . $_EXTKEY . '/locallang.xml';
+
 
 		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cms']['db_layout']['addTables'][$addressTable] = array (
 			'default' => array(
@@ -114,11 +122,16 @@ if (TYPO3_MODE == 'BE')	{
 	}
 }
 
-if (TYPO3_MODE == 'FE') {
+if (TYPO3_MODE == 'FE') { // only needed before TYPO3 6.2
 	if (t3lib_extMgm::isLoaded('tt_products')) {
 		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['tt_products']['extendingTCA'][] = $_EXTKEY;
 	}
-	$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['sr_feuser_register']['extendingTCA'][] = $_EXTKEY;
+	$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['agency']['extendingTCA'][] = $_EXTKEY;
+
+	if (t3lib_extMgm::isLoaded('direct_mail')) {
+		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extendingTCA'][] = 'direct_mail';
+	}
 }
+
 
 ?>
