@@ -1,5 +1,9 @@
+2017-09-04 Franz Holzinger <franz@ttproducts.de>
+    * restructuring: move constants.txt and setup.txt from folder static into /Configuration/TypoScript/PluginSetup/
+    * support for TYPO3 8.7 and PHP 7
+
 2014-03-06 Franz Holzinger <franz@ttproducts.de>
-        * support alternative for the removed fe_admin_fieldList in TYPO3 6.2
+    * support alternative for the removed fe_admin_fieldList in TYPO3 6.2
 	* change all class names from prefix tx-agencyttaddress into agencyttaddress
 	* support DirectMail backend even if direct_mail is not installed any
 	more.

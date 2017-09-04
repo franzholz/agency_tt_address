@@ -5,12 +5,19 @@ if (!defined ('TYPO3_MODE')) {
 }
 
 $typoVersion = tx_div2007_core::getTypoVersion();
+if (!isset($_EXTKEY)) {
+    $_EXTKEY = AGENCY_TT_ADDRESS_EXT;
+}
 
 if (
 	TYPO3_MODE == 'BE' &&
 	!$loadTcaAdditions
 ) {
-	t3lib_extMgm::addStaticFile($_EXTKEY, 'static/', 'Agency Registration for tt_address');
+	t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript/PluginSetup/', 'Agency Registration for tt_address');
+
+    if (version_compare(TYPO3_version, '6.2.0', '<')) {
+        call_user_func($emClass . '::addStaticFile', $_EXTKEY, 'Configuration/TypoScript/PluginSetup/Compatibility4.5/', 'Agency Registration for tt_address compatibility TYPO3 4.5');
+    }
 
 	if ($typoVersion < 6002000) {
 
@@ -236,7 +243,7 @@ if (!t3lib_extMgm::isLoaded('sr_email_subscribe')) {
 						'minitems' => 0,
 						'maxitems' => 1000,
 						)
-						
+
 				),
 				'module_sys_dmail_html' => Array(
 					'label' => 'LLL:EXT:' . $_EXTKEY . '/locallang_db.xml:tt_address.module_sys_dmail_html',
@@ -257,4 +264,3 @@ if (!t3lib_extMgm::isLoaded('sr_email_subscribe')) {
 	}
 }
 
-?>
