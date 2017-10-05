@@ -1,3 +1,13 @@
+2017-10-05 Franz Holzinger <franz@ttproducts.de>
+    * change CSS class naming tx-agencyttaddres => agencyttaddress
+    * support for TYPO3 7 and 8 under agency 0.4.1
+
+2017-09-06 Franz Holzinger <franz@ttproducts.de>
+    * remove support for TYPO3 4.5 and 6.2
+    * move pi/class.tx_agencyttaddress_pi_base into /Controller/RegisterPluginController.php
+    * move hooks/class.tx_agencyttaddress_hooks_cms.php => Classes/Hooks/CmsBackend.php
+    * move class.tx_agencyttaddress.php => Classes/Bootstrap.php
+
 2017-09-04 Franz Holzinger <franz@ttproducts.de>
     * restructuring: move constants.txt and setup.txt from folder static into /Configuration/TypoScript/PluginSetup/
     * support for TYPO3 8.7 and PHP 7

@@ -1,6 +1,6 @@
-# THESE create statements will NOT work if this file is piped into MySQL. 
-# Rather they will be detected by the Typo3 Install Tool and through that 
-# you should upgrade the tables to content these fields.
+# THESE create statements will NOT work if this file is piped into MySQL.
+# Rather they will be detected by the TYPO3 Install Tool and through that
+# you should upgrade the tt_address table to contain these fields.
 
 
 CREATE TABLE tt_address (

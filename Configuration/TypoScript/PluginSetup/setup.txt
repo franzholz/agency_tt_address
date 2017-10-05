@@ -1,12 +1,12 @@
 ##
 ## @package TYPO3
 ## @subpackage agency_tt_address
-## @version $Id$
 ##
 
 plugin.tx_agencyttaddress = USER_INT
 plugin.tx_agencyttaddress {
 
+    userFunc = JambageCom\AgencyTtAddress\Controller\Bootstrap->main
 	table.name = {$plugin.tx_agencyttaddress.tableName}
 
 	templateStyle = css-styled
@@ -184,42 +184,40 @@ plugin.tx_agencyttaddress {
 	notify.SETFIXED_DELETE =  {$plugin.tx_agencyttaddress.enableAdminNotifyOnDelete}
 
   _CSS_DEFAULT_STYLE (
-	.tx-agencyttaddress p { margin-top: .5em; margin-bottom: 0; padding: 0 .3em; text-indent: 0; }
-	.tx-agencyttaddress p.tx-agencyttaddress-click-to-edit { margin-left: 2em; margin-right: 2em;}
-	.tx-agencyttaddress h4 { margin-top: 0; padding-left: .3em; }
-	.tx-agencyttaddress legend { padding: 0 .5em; font-weight: bold; }
-	.tx-agencyttaddress .tx-agencyttaddress-notice { font-style: italic; margin-bottom: 1em; }
-	.tx-agencyttaddress .tx-agencyttaddress-trash { margin-bottom: 2em; }
-	.tx-agencyttaddress a { padding-left: 14px; background-image: url("../typo3conf/ext/sr_feuser_register/pi1/internal_link.gif"); background-repeat: no-repeat; background-position: 0% 60%; text-decoration:none; }
-	.tx-agencyttaddress label { margin: 0; padding: 0; }
-	.tx-agencyttaddress label span { color: #ff0000; }
-	.tx-agencyttaddress .tx-agencyttaddress-error { color: #ff0000; }
-	.tx-agencyttaddress input { margin: 0; padding: 0 .5em 0 0; }
-	.tx-agencyttaddress input[type=password] { margin-right: 1em; }
-	* html .tx-agencyttaddress input.tx-agencyttaddress-password { margin-right: 1em; }
-	.tx-agencyttaddress input[type=radio], .tx-agencyttaddress input[type=checkbox] { background-color: transparent; }
-	* html .tx-agencyttaddress input.tx-agencyttaddress-radio, * html .tx-agencyttaddress input.tx-agencyttaddress-checkbox { background-color: transparent; }
-	.tx-agencyttaddress .tx-agencyttaddress-delete-icon { margin-left: 1em; background-color: transparent; }
-	.tx-agencyttaddress .tx-agencyttaddress-delete-icon:hover { cursor: pointer; }
-	.tx-agencyttaddress a.tx-agencyttaddress-file-view { padding-left: 15px; background-image: url("../typo3conf/ext/sr_feuser_register/pi1/internal_link_new_window.gif"); background-color: transparent; background-repeat: no-repeat; font-size: .8em; margin-left: 1em; }
-	.tx-agencyttaddress ul { margin: 0; padding: 0; list-style-position: inside; }
-	.tx-agencyttaddress ul.tx-agencyttaddress-multiple-checkboxes { list-style-type: none; }
-	.tx-agencyttaddress ul.tx-agencyttaddress-multiple-checkboxes li { margin: 0 0 .3em 0; padding: 0; }
-	.tx-agencyttaddress ul.tx-agencyttaddress-multiple-checkboxes li label { margin: 0; padding: 0 0 0 .5em; }
-	.tx-agencyttaddress ul.tx-agencyttaddress-multiple-checked-values li { float: left; padding: 0 2em 0 0; margin: 0; }
-	.tx-agencyttaddress dl { margin: 0; padding: 1em 0 0 0; }
-	.tx-agencyttaddress dt, .tx-agencyttaddress dd { margin: 0; padding: 0 0 .5em 0; float: left; }
-	.tx-agencyttaddress dt { clear: both; width: 25%; text-align: right; padding-right: 1em; }
-	.tx-agencyttaddress dd { text-align: left; width: 50%; }
-	.tx-agencyttaddress .tx-agencyttaddress-multiple-checkboxes dt { width: auto; padding-right: 0; }
-	.tx-agencyttaddress .tx-agencyttaddress-multiple-checkboxes dd { width: auto; }
-	* html .tx-agencyttaddress dd { float: none; }
-	.tx-agencyttaddress dd p { margin-top: 0; margin-bottom: .5em; padding: 0; }
-	.tx-agencyttaddress dd label { padding: 0 1em 0 .5em; }
+	.agencyttaddress p { margin-top: .5em; margin-bottom: 0; padding: 0 .3em; text-indent: 0; }
+	.agencyttaddress p.agencyttaddress-click-to-edit { margin-left: 2em; margin-right: 2em;}
+	.agencyttaddress h4 { margin-top: 0; padding-left: .3em; }
+	.agencyttaddress legend { padding: 0 .5em; font-weight: bold; }
+	.agencyttaddress .agencyttaddress-notice { font-style: italic; margin-bottom: 1em; }
+	.agencyttaddress .agencyttaddress-trash { margin-bottom: 2em; }
+	.agencyttaddress a { padding-left: 14px; background-image: url("../typo3conf/ext/agency/res/icons/fe/internal_link.gif"); background-repeat: no-repeat; background-position: 0% 60%; text-decoration:none; }
+	.agencyttaddress label { margin: 0; padding: 0; }
+	.agencyttaddress label span { color: #ff0000; }
+	.agencyttaddress .agencyttaddress-error { color: #ff0000; }
+	.agencyttaddress input { margin: 0; padding: 0 .5em 0 0; }
+	.agencyttaddress input[type=password] { margin-right: 1em; }
+	* html .agencyttaddress input.agencyttaddress-password { margin-right: 1em; }
+	.agencyttaddress input[type=radio], .agencyttaddress input[type=checkbox] { background-color: transparent; }
+	* html .agencyttaddress input.agencyttaddress-radio, * html .agencyttaddress input.agencyttaddress-checkbox { background-color: transparent; }
+	.agencyttaddress .agencyttaddress-delete-icon { margin-left: 1em; background-color: transparent; }
+	.agencyttaddress .agencyttaddress-delete-icon:hover { cursor: pointer; }
+	.agencyttaddress a.agencyttaddress-file-view { padding-left: 15px; background-image: url("../typo3conf/ext/agency/res/icons/fe/internal_link_new_window.gif"); background-color: transparent; background-repeat: no-repeat; font-size: .8em; margin-left: 1em; }
+	.agencyttaddress ul { margin: 0; padding: 0; list-style-position: inside; }
+	.agencyttaddress ul.agencyttaddress-multiple-checkboxes { list-style-type: none; }
+	.agencyttaddress ul.agencyttaddress-multiple-checkboxes li { margin: 0 0 .3em 0; padding: 0; }
+	.agencyttaddress ul.agencyttaddress-multiple-checkboxes li label { margin: 0; padding: 0 0 0 .5em; }
+	.agencyttaddress ul.agencyttaddress-multiple-checked-values li { float: left; padding: 0 2em 0 0; margin: 0; }
+	.agencyttaddress dl { margin: 0; padding: 1em 0 0 0; }
+	.agencyttaddress dt, .agencyttaddress dd { margin: 0; padding: 0 0 .5em 0; float: left; }
+	.agencyttaddress dt { clear: both; width: 25%; text-align: right; padding-right: 1em; }
+	.agencyttaddress dd { text-align: left; width: 50%; }
+	.agencyttaddress .agencyttaddress-multiple-checkboxes dt { width: auto; padding-right: 0; }
+	.agencyttaddress .agencyttaddress-multiple-checkboxes dd { width: auto; }
+	* html .agencyttaddress dd { float: none; }
+	.agencyttaddress dd p { margin-top: 0; margin-bottom: .5em; padding: 0; }
+	.agencyttaddress dd label { padding: 0 1em 0 .5em; }
   )
 
   _DEFAULT_PI_VARS {
   }
-
 }
-

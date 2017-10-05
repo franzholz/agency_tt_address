@@ -1,8 +1,11 @@
 <?php
+
+namespace JambageCom\AgencyTtAddress\Hooks;
+
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2012 Franz Holzinger (franz@ttproducts.de)
+*  (c) 2017 Franz Holzinger <franz@ttproducts.de>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -29,8 +32,6 @@
  *
  * hook functions for the TYPO3 cms
  *
- * $Id$
- *
  * @author	Franz Holzinger <franz@ttproducts.de>
  * @maintainer	Franz Holzinger <franz@ttproducts.de>
  * @package TYPO3
@@ -40,14 +41,8 @@
  */
 
 
-class tx_agencyttaddress_hooks_cms extends tx_div2007_hooks_cms {
-	public $extKey = AGENCY_TT_ADDRESS_EXT;
+class CmsBackend extends \JambageCom\Div2007\Base\CmsHookBase {
+    public $extKey = AGENCY_TT_ADDRESS_EXT;
 
 }
 
-
-if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/agency_tt_address/hooks/class.tx_agencyttaddress_hooks_cms.php'])	{
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/agency_tt_address/hooks/class.tx_agencyttaddress_hooks_cms.php']);
-}
-
-?>

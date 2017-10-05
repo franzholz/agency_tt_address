@@ -1,9 +1,12 @@
 <?php
+
+namespace JambageCom\AgencyTtAddress\Controller;
+
 /***************************************************************
 *  Copyright notice
 *
 *  (c) 1999-2003 Kasper Skårhøj <kasperYYYY@typo3.com>
-*  (c) 2004-2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2004-2017 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -24,30 +27,26 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  *
- * Front End creating/editing/deleting records authenticated by email address, also called subscriptions.
- *
- * $Id$
+ * Bootstrap class which initializes the plugin object
  *
  * @author	Kasper Skårhøj <kasperYYYY@typo3.com>
  * @author	Stanislas Rolland <typo3(arobas)sjbr.ca>
  * @author	Franz Holzinger <franz@ttproducts.de>
  */
 
-class tx_agencyttaddress {
-	public $cObj;
+class Bootstrap {
+    public $cObj;
 
-	public function main ($content, $conf) {
-		$pibaseObj = t3lib_div::getUserObj('&tx_agencyttaddress_pi_base');
-		$pibaseObj->cObj = $this->cObj;
-		$content = $pibaseObj->main($content, $conf);
-		return $content;
-	}
+    public function main ($content, $conf) {
+        $pibaseObj = GeneralUtility::makeInstance(\JambageCom\AgencyTtAddress\Controller\RegisterPluginController::class);
+        $pibaseObj->cObj = $this->cObj;
+        $content = $pibaseObj->main($content, $conf);
+        return $content;
+    }
 }
 
-if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/agency_tt_address/class.tx_agencyttaddress.php']) {
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/agency_tt_address/class.tx_agencyttaddress.php']);
-}
-
-?>
