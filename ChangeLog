@@ -1,3 +1,6 @@
+2017-12-27 Franz Holzinger <franz@ttproducts.de>
+    * bugfix: XHTML shall be used in the example HTML template file
+
 2017-10-05 Franz Holzinger <franz@ttproducts.de>
     * change CSS class naming tx-agencyttaddres => agencyttaddress
     * support for TYPO3 7 and 8 under agency 0.4.1
