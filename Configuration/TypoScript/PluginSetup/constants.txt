@@ -113,6 +113,12 @@ plugin.tx_agencyttaddress {
     # cat=plugin.tx_agencyttaddress/enable; type=boolean; label= Enable HTML email attachment: If set, the specified attachment file will be attached to the confirmation HTML email.
   enableEmailAttachment = 0
 
+    # cat=plugin.tx_agency/enable; type=boolean; label= Ask again before delete: If set, a deletion confirmation link in an email will show a question dialog which asks again if someone really wants to delete.
+  askAgainBeforeDelete = 1
+
+    # cat=plugin.tx_agency/enable; type=boolean; label= Ask again before approve: If set, approve confirmation link in an email will show a question dialog which asks again if someone really wants to approve.
+  askAgainBeforeApprove = 1
+
     # cat=plugin.tx_agencyttaddress//; type=int+; label= Maximun name length: The maximum number of characters that the name of the subscriber may contain.
   nameAtMost = 80
 

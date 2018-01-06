@@ -91,10 +91,12 @@ plugin.tx_agencyttaddress {
 	setfixed = 1
 	setfixed.APPROVE {
 		_FIELDLIST = uid,pid
+        _CONFIG.askAgain = {$plugin.tx_agencyttaddress.askAgainBeforeApprove}
 		hidden = 0
 	}
 	setfixed.DELETE {
 		_FIELDLIST = {$plugin.tx_agencyttaddress.authcodeFields}
+        _CONFIG.askAgain = {$plugin.tx_agencyttaddress.askAgainBeforeDelete}
 	}
 	setfixed.EDIT {
 		_FIELDLIST = {$plugin.tx_agencyttaddress.authcodeFields}
